@@ -6,13 +6,13 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/01 19:15:28 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:15:16 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_args	*x;
 

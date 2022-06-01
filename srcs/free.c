@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:12 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/01 19:15:55 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:14:00 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	j_free(void **x)
 }
 void	free_args(t_args **x)
 {
-	j_free(x);
+	j_free((void **)x);
 }

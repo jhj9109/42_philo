@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonjan <hyeonjan@student.42seoul.>       +#+  +:+       +#+         #
+#    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/01 19:13:47 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/01 20:10:47 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,13 @@ BNS_DIR = ./bonus/
 
 SRC_FILES = exit.c \
 			free.c \
-			philo.c
+			philo.c \
+			utils.c
 
 BNS_FILES = exit.c \
 			free.c \
-			philo.c
+			philo.c \
+			utils.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 BNSS = $(addprefix $(BNS_DIR), $(BNS_FILES))

@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   t_args_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/01 20:25:25 by hyeonjan         ###   ########.fr       */
+/*   Created: 2022/06/01 20:22:53 by hyeonjan          #+#    #+#             */
+/*   Updated: 2022/06/01 20:54:27 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+void	t_args_init(t_args **x)
 {
-	t_args	*x;
-
-	/**
-	 *	1. t_args_init(&x)
-	 *	- malloc
-	 *	- philo struct
-	*/
-	t_args_init(&x);
-
-	/**
-	 * 2. parse(x, ac, **av)
-	 * parsing => set_setting
-	*/
-	parse(&x, ac, av);
-
-	/**
-	 *	3. thread_create
-	*/
-
-	/**
-	 * 4. philo start
-	*/
-	// printf("ac: %d, programe_name:, %s", ac, av[0]);
-	exit_valid(&x);
+	*x = ft_calloc(1, sizeof(t_args));
+	if (*x == NULL)
+		exit_invalid(x, "Error\n", "Fail to malloc for t_args!\n");
 }

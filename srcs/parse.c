@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/01 20:25:25 by hyeonjan         ###   ########.fr       */
+/*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
+/*   Updated: 2022/06/01 20:36:14 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+void	parse(t_args **x_ptr, int ac, char **av)
 {
 	t_args	*x;
 
-	/**
-	 *	1. t_args_init(&x)
-	 *	- malloc
-	 *	- philo struct
-	*/
-	t_args_init(&x);
-
-	/**
-	 * 2. parse(x, ac, **av)
-	 * parsing => set_setting
-	*/
-	parse(&x, ac, av);
-
-	/**
-	 *	3. thread_create
-	*/
-
-	/**
-	 * 4. philo start
-	*/
-	// printf("ac: %d, programe_name:, %s", ac, av[0]);
-	exit_valid(&x);
+	x = *x_ptr;
+	if (!ft_atoi(av[1], &(x->number_philo) || \
+		!ft_atoi(av[2], &(x->time_die) || \
+		!ft_atoi(av[3], &(x->time_eat) || \
+		!ft_atoi(av[4], &(x->time_sleep) || \
+		(ac == 6 && !ft_atoi(av[5], &(x->number_goal_eat))))
+		exit_invalid(x_ptr, "Error\n", "invalid argument!\n");
 }

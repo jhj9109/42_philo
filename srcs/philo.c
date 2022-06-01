@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/01 20:25:25 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/02 02:57:01 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	 * 2. parse(x, ac, **av)
 	 * parsing => set_setting
 	*/
-	parse(&x, ac, av);
+	parse(x, ac, av);
 
 	/**
 	 *	3. thread_create
@@ -37,5 +37,5 @@ int	main(int ac, char **av)
 	 * 4. philo start
 	*/
 	// printf("ac: %d, programe_name:, %s", ac, av[0]);
-	exit_valid(&x);
+	exit_valid(x);
 }

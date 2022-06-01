@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/01 20:31:44 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/02 02:58:43 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef pthread_mutex_t t_mutex;
 typedef struct s_philo
 {
 	int			id;
+	int			l;
+	int			r;
 	t_thread	philo;
 	t_thread	monitor;
 }	t_philo;
@@ -45,7 +47,7 @@ typedef struct s_args
 	int		time_eat;
 	int		time_sleep;
 	int		number_goal_eat;
-	t_philo	*philo;
+	t_philo	*philos;
 	t_mutex	*forks;
 	t_mutex	*print;
 	int		remain;
@@ -53,15 +55,15 @@ typedef struct s_args
 }	t_args;
 
 /* exit */
-void	exit_invalid(t_args **x, char *s1, char *s2);
-void	exit_valid(t_args **x);
+void	exit_invalid(t_args *x, char *s1, char *s2);
+void	exit_valid(t_args *x);
 
 /* free */
 void	j_free(void **x);
-void	free_args(t_args **x);
+void	free_args(t_args *x);
 
 /* parse */
-void	parse(t_args **x, int ac, char **av);
+void	parse(t_args *x, int ac, char **av);
 
 /* t_args_init */
 void	t_args_init(t_args **x);

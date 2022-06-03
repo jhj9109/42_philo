@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/02 02:58:43 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:47:58 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <string.h>/*memset*/
+/* int gettimeofday(struct timeval * __restrict, void * __restrict); */
+# include <sys/time.h>
 
 /**
  * enum
@@ -30,11 +33,13 @@ typedef pthread_mutex_t t_mutex;
 */
 typedef struct s_philo
 {
+	void		*x;
+	bool		*finish_ptr;
 	int			id;
 	int			l;
 	int			r;
-	t_thread	philo;
-	t_thread	monitor;
+	long long	last_eat;
+	t_thread	thread;
 }	t_philo;
 
 /*
@@ -49,9 +54,10 @@ typedef struct s_args
 	int		number_goal_eat;
 	t_philo	*philos;
 	t_mutex	*forks;
-	t_mutex	*print;
+	t_mutex	print;
 	int		remain;
 	bool	finish;
+	int		died;
 }	t_args;
 
 /* exit */
@@ -62,11 +68,16 @@ void	exit_valid(t_args *x);
 void	j_free(void **x);
 void	free_args(t_args *x);
 
+/* monitoring */
+void	monitoring(t_args *x);
+
 /* parse */
 void	parse(t_args *x, int ac, char **av);
 
-/* t_args_init */
-void	t_args_init(t_args **x);
+/* philo_func */
+void	*philo_func(t_philo *p);
+
+/* philo => main */
 
 /* utils */
 size_t	ft_strlen(const char *str);
@@ -74,5 +85,10 @@ void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(char *p, int n);
 bool	ft_atoi(char *s, int *dest);
+
+/* utils2 */
+long long	get_ms(t_args *x);
+void	j_sleep(t_args *x, long long ms);
+bool	is_over(struct timeval unix1, struct timeval unix2, long long ms);
 
 #endif

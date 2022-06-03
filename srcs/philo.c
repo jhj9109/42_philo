@@ -6,36 +6,27 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/02 02:57:01 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/03 21:48:29 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	somefunc(t_args *x)
+{
+	while (!x->finish)
+		usleep(10);
+	pthread_mutex_unlock(&(x->print));
+	if (x->died)
+		printf("Philosopher => %d => died\n", x->died);
+	printf("Finished!\n");
+}
+
 int	main(int ac, char **av)
 {
-	t_args	*x;
+	t_args	x;
 
-	/**
-	 *	1. t_args_init(&x)
-	 *	- malloc
-	 *	- philo struct
-	*/
-	t_args_init(&x);
-
-	/**
-	 * 2. parse(x, ac, **av)
-	 * parsing => set_setting
-	*/
-	parse(x, ac, av);
-
-	/**
-	 *	3. thread_create
-	*/
-
-	/**
-	 * 4. philo start
-	*/
-	// printf("ac: %d, programe_name:, %s", ac, av[0]);
-	exit_valid(x);
+	memset(&x, 0, sizeof(x));
+	parse(&x, ac, av);
+	monitoring(&x);
 }

@@ -1,21 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/05 21:40:13 by hyeonjan          #+#    #+#             */
+/*   Updated: 2022/06/05 22:43:46 by hyeonjan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-long long	get_ms(t_args *x)
+long long	ft_get_ms(t_args *x)
 {
 	struct timeval	unix;
+	long long res;
 
 	if (gettimeofday(&unix, NULL) == -1)
 		exit_invalid(x, "Error\n", "Fail to func gettimeofdat!\n");
-	return (unix.tv_sec * 1000 - unix.tv_usec / 1000);
+	res = (long long)(unix.tv_sec * MILLI + unix.tv_usec / MILLI);
+	return (res);
 }
 
-void	j_sleep(t_args *x, long long ms)
+void	ft_usleep(t_args *x, long long from_time, long long interval)
 {
-	while (get_ms(x) <= ms)
-		usleep(100);//작은 값으로 잘 설정하자.
+	long long	now;
+
+	while (true)
+	{
+		now = ft_get_ms(x);
+		if (now - from_time >= interval)
+			return ;
+		if (usleep(EPSILON) == ERROR)
+			exit_invalid(x, "Error\n", "Fail to sleep_little\n");
+	}
 }
 
-bool	is_over(struct timeval unix1, struct timeval unix2, long long ms)
+void	ft_log(t_philo *p, t_msg_state msg_state)
 {
-	return (((unix2.tv_sec - unix1.tv_sec) * 1000 + (unix2.tv_usec - unix1.tv_usec) / 1000) >= ms);
+	static char	*msg[5] = {
+		"has taken a fork",
+		"is eating",
+		"is sleeping",
+		"is thinking",
+		"died=============",
+	};
+	t_args	*x;
+
+	x = p->x;
+	// ft_mutex_lock(x, &x->print);
+	// if (msg_state == DYING || !x->finish)
+	printf("%lld %d %s\n", ft_get_ms(x) - x->begin_time, p->id + 1, msg[msg_state]);
+	// if (msg_state != DYING)
+	// 	ft_mutex_unlock(x, &x->print);
+	// else
+	// 	ft_mutex_unlock(x, &x->finish_mutex);
 }

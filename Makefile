@@ -6,7 +6,7 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/01 20:10:47 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/05 21:14:33 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = philo
 NAME2 = philo_bonus
 
 CC = cc
+# CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra -Werror
 
 INC_LINK = -I ./includes
@@ -26,8 +27,13 @@ BNS_DIR = ./bonus/
 
 SRC_FILES = exit.c \
 			free.c \
+			mutex.c \
+			parse.c \
 			philo.c \
-			utils.c
+			thread_func.c \
+			thread.c \
+			utils.c \
+			utils2.c
 
 BNS_FILES = exit.c \
 			free.c \

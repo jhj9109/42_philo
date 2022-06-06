@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 16:05:13 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 21:16:26 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef enum e_stat
 
 typedef enum e_msg_state
 {
-	TAKING,
+	PICKING,
 	EATING,
 	SLEEPING,
 	THINKING,
@@ -85,6 +85,10 @@ void		exit_valid(t_args *x);
 /* free */
 void		j_free(void **x);
 void		free_args(t_args *x);
+
+/* handle_fork */
+void		pick_up_fork(t_philo *p, t_args *x);
+void		put_down_fork(t_philo *p, t_args *x);
 
 /* parse */
 void		parse(t_args *x, int ac, char **av);

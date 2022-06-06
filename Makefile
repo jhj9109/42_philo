@@ -6,7 +6,7 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/06 14:35:04 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/06 21:16:12 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ BNS_DIR = ./bonus/
 
 SRC_FILES = exit.c \
 			free.c \
+			handle_fork.c \
 			mutex.c \
 			parse.c \
 			philo.c \

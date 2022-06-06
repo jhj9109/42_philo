@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 21:17:05 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 21:23:11 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ static void	_eating(t_philo *p)
 	x = p->x;
 	p->last_eat = ft_get_ms(x);
 	ft_log(p, EATING);
-	if (++(p->eaten) == x->number_goal_eat)
-		if (--(x->remain) == 0)
-			ft_log(p, ACHIEVING);
+	if (++(p->eaten) == x->number_goal_eat && --(x->remain) == 0)
+	{
+		ft_log(p, ACHIEVING);
+		ft_mutex_unlock(x, &x->end_mutex);
+	}
 	now = ft_get_ms(x);
 	ft_usleep(x, now, x->time_eat);
 	put_down_fork(p, x);

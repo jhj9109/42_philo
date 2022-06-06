@@ -6,7 +6,7 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/06 21:16:12 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/06 22:20:09 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,16 @@ SRC_FILES = exit.c \
 			utils.c \
 			utils2.c
 
-BNS_FILES = exit.c \
+BNS_FILES = child_proc.c \
+			exit.c \
 			free.c \
-			philo.c \
-			utils.c
+			handle_fork.c \
+			parse.c \
+			philo_bonus.c \
+			semaphore.c \
+			thread_func.c \
+			utils.c \
+			utils2.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 BNSS = $(addprefix $(BNS_DIR), $(BNS_FILES))

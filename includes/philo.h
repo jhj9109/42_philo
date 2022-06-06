@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 14:50:27 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:05:13 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef enum e_msg_state
 	SLEEPING,
 	THINKING,
 	DYING,
+	ACHIEVING,
 }	t_msg_state;
 
 typedef struct s_philo
@@ -51,6 +52,7 @@ typedef struct s_philo
 	int			id;
 	int			l;
 	int			r;
+	int			eaten;
 	long long	last_eat;
 	t_thread	philo_thread;
 	t_thread	monitor_thread;

@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:40:13 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 14:51:29 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:15:18 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,29 @@ void	ft_usleep(t_args *x, long long from_time, long long interval)
 
 void	ft_log(t_philo *p, t_msg_state msg_state)
 {
-	static char	*msg[5] = {
+	static char	*msg[6] = {
 		"has taken a fork",
 		"is eating",
 		"is sleeping",
 		"is thinking",
 		"died",
+		"Achieved program's goal!",
 	};
 	t_args		*x;
 	long long	now;
+	int			number;
 
 	x = p->x;
 	ft_mutex_lock(x, &x->print);
 	now = ft_get_ms(x);
-	printf("%lld %d %s\n", now - x->begin_time, p->id + 1, msg[msg_state]);
-	if (msg_state != DYING)
+	number = p->id + 1;
+	if (msg_state == ACHIEVING)
+		number = x->number_goal_eat;
+	printf("%lld %d %s\n", now - x->begin_time, number, msg[msg_state]);
+	if (msg_state < DYING)
 		ft_mutex_unlock(x, &x->print);
+	else
+		ft_mutex_unlock(x, &x->end_mutex);
 }
 
 void	ft_thread_create_detached(

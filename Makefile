@@ -6,7 +6,7 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/05 21:14:33 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/06 14:35:04 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ SRC_FILES = exit.c \
 			parse.c \
 			philo.c \
 			thread_func.c \
-			thread.c \
 			utils.c \
 			utils2.c
 

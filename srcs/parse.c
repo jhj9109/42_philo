@@ -6,16 +6,16 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 12:12:39 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:52:07 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void _parse_arguments(t_args *x, int ac, char **av)
+static void	_parse_arguments(t_args *x, int ac, char **av)
 {
 	if (ac != 5 && ac != 6)
-		exit_invalid(x, "Error\n", "Invalid argument!\n");
+		exit_invalid(x, "Error\n", "Invalid argument! It must be 5 or 6 args.\n");
 	if (!ft_atoi(av[1], &(x->number_philo)) || \
 		!ft_atoi(av[2], &(x->time_die)) || \
 		!ft_atoi(av[3], &(x->time_eat)) || \
@@ -74,16 +74,10 @@ static void	_set_philo(t_args *x)
 			x->philos[i].r = (i + 1) % (x->number_philo);
 		}
 		x->philos[i].x = x;
-		// ft_thread_create_detached(x, &x->philos[i], &x->philos[i].philo_thread, philo_func);
-		// ft_thread_create_detached(x, &x->philos[i], &x->philos[i].monitor_thread, monitoring_func);
-		if (pthread_create(&x->philos[i].philo_thread, NULL, philo_func, (void *)(&x->philos[i])))
-			exit_invalid(x, "Error\n", "Fail to phtread_create at philo_thread\n");
-		if (pthread_detach(x->philos[i].philo_thread))
-			exit_invalid(x, "Error\n", "Fail to pthread_detach at philo_thread\n");
-		if (pthread_create(&x->philos[i].monitor_thread, NULL, monitoring_func, (void *)(&x->philos[i])))
-			exit_invalid(x, "x->philos[i]\n", "Fail to phtread_create at monitor_thread\n");
-		if (pthread_detach(x->philos[i].monitor_thread))
-			exit_invalid(x, "Error\n", "Fail to pthread_detach at monitor_thread\n");
+		ft_thread_create_detached(x, &x->philos[i], \
+			&x->philos[i].philo_thread, philo_func);
+		ft_thread_create_detached(x, &x->philos[i], \
+			&x->philos[i].monitor_thread, monitoring_func);
 	}
 }
 

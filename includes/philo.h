@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 11:50:42 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 14:50:27 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 # include <string.h>
 # include <sys/time.h>
 
-# define EPSILON	10
+# define EPSILON	99
 # define MILLI		1000
 
 /**
  * enum
 */
-typedef pthread_t t_thread;
-typedef pthread_mutex_t t_mutex;
+typedef pthread_t		t_thread;
+typedef pthread_mutex_t	t_mutex;
 
 typedef enum e_stat
 {
@@ -44,9 +44,7 @@ typedef enum e_msg_state
 	THINKING,
 	DYING,
 }	t_msg_state;
-/**
- * id: 1 ~
-*/
+
 typedef struct s_philo
 {
 	void		*x;
@@ -79,41 +77,36 @@ typedef struct s_args
 }	t_args;
 
 /* exit */
-void	exit_invalid(t_args *x, char *s1, char *s2);
-void	exit_valid(t_args *x);
+void		exit_invalid(t_args *x, char *s1, char *s2);
+void		exit_valid(t_args *x);
 
 /* free */
-void	j_free(void **x);
-void	free_args(t_args *x);
+void		j_free(void **x);
+void		free_args(t_args *x);
 
 /* parse */
-void	parse(t_args *x, int ac, char **av);
+void		parse(t_args *x, int ac, char **av);
 
 /* thread_func */
-void	*philo_func(void *ptr);
-void	*monitoring_func(void *ptr);
+void		*philo_func(void *ptr);
+void		*monitoring_func(void *ptr);
 
 /* utils */
-// size_t	ft_strlen(const char *str);
-void	*ft_memset(void *b, int c, size_t len);
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_itoa(char *p, int n);
-bool	ft_atoi(char *s, int *dest);
+void		*ft_memset(void *b, int c, size_t len);
+void		*ft_calloc(size_t count, size_t size);
+char		*ft_itoa(char *p, int n);
+bool		ft_atoi(char *s, int *dest);
 
 /* utils2 */
 long long	ft_get_ms(t_args *x);
-// void		ft_usleep(t_args *x, long long ms);
 void		ft_usleep(t_args *x, long long from_time, long long interval);
 void		ft_log(t_philo *p, t_msg_state msg_state);
+void		ft_thread_create_detached(t_args *x, t_philo *philo, \
+				t_thread *thread, void *(*fp)(void *));
 
 /* mutex */
-void	ft_mutex_init(t_args *x, t_mutex *m);
-void	ft_mutex_lock(t_args *x, t_mutex *m);
-void	ft_mutex_unlock(t_args *x, t_mutex *m);
-
-/* thread */
-void	ft_thread_create_detached(t_args *x, t_philo *philo, \
-						t_thread *thread, void *(*fp)(void *));
-// void	ft_thread_detach(t_args *x, t_thread thread);
+void		ft_mutex_init(t_args *x, t_mutex *m);
+void		ft_mutex_lock(t_args *x, t_mutex *m);
+void		ft_mutex_unlock(t_args *x, t_mutex *m);
 
 #endif

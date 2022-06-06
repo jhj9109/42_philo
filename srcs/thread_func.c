@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:09:34 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 22:11:31 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ void	*monitoring_func(void *ptr)
 
 	p = (t_philo *)ptr;
 	x = p->x;
-	now = ft_get_ms(x);
-	ft_usleep(x, now, x->time_die / 2);
+	ft_usleep(x, x->begin_time, x->time_die / 2);
 	while (true)
 	{
 		now = ft_get_ms(x);

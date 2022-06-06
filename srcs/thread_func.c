@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:11:31 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 22:22:48 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	*philo_func(void *ptr)
 	p->last_eat = x->begin_time;
 	now = ft_get_ms(x);
 	if (p->id % 2 == 0)
-		ft_usleep(x, now, EPSILON);
+		usleep(EPSILON);
 	while (true)
 	{
 		_thinking(p);

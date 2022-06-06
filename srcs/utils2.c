@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:40:13 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 16:15:18 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 21:04:45 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	ft_log(t_philo *p, t_msg_state msg_state)
 	printf("%lld %d %s\n", now - x->begin_time, number, msg[msg_state]);
 	if (msg_state < DYING)
 		ft_mutex_unlock(x, &x->print);
-	else
-		ft_mutex_unlock(x, &x->end_mutex);
 }
 
 void	ft_thread_create_detached(

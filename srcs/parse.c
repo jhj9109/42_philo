@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/05 22:14:15 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:12:39 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void	_set_mutex(t_args *x)
 		ft_mutex_init(x, &x->forks[i]);
 	ft_mutex_init(x, &x->print);
 	ft_mutex_init(x, &x->dead);
-	ft_mutex_init(x, &x->finish_mutex);
+	ft_mutex_init(x, &x->end_mutex);
+	ft_mutex_lock(x, &x->end_mutex);
 }
 
 static void	_set_philo(t_args *x)
@@ -56,26 +57,33 @@ static void	_set_philo(t_args *x)
 	int			i;
 	long long	begin_time;
 
-	ft_mutex_lock(x, &x->finish_mutex);
 	begin_time = ft_get_ms(x);
 	x->begin_time = begin_time;
 	i = -1;
 	while (++i < x->number_philo)
 	{
 		x->philos[i].id = i;
-		x->philos[i].l = i;
-		x->philos[i].r = (i + 1) % (x->number_philo);
+		if (i % 2)
+		{
+			x->philos[i].r = i;
+			x->philos[i].l = (i + 1) % (x->number_philo);
+		}
+		else
+		{
+			x->philos[i].l = i;
+			x->philos[i].r = (i + 1) % (x->number_philo);
+		}
 		x->philos[i].x = x;
-		ft_thread_create_detached(x, &x->philos[i], &x->philos[i].philo_thread, philo_func);
-		ft_thread_create_detached(x, &x->philos[i], &x->philos[i].monitor_thread, monitoring_func);
-		// if (pthread_create(&x->philos[i].philo_thread, NULL, philo_func, (void *)(&x->philos[i])))
-		// 	exit_invalid(x, "Error\n", "Fail to phtread_create at philo_thread\n");
-		// if (pthread_detach(x->philos[i].philo_thread))
-		// 	exit_invalid(x, "Error\n", "Fail to pthread_detach at philo_thread\n");
-		// if (pthread_create(&x->philos[i].monitor_thread, NULL, monitoring_func, (void *)(&x->philos[i])))
-		// 	exit_invalid(x, "x->philos[i]\n", "Fail to phtread_create at monitor_thread\n");
-		// if (pthread_detach(x->philos[i].monitor_thread))
-		// 	exit_invalid(x, "Error\n", "Fail to pthread_detach at monitor_thread\n");
+		// ft_thread_create_detached(x, &x->philos[i], &x->philos[i].philo_thread, philo_func);
+		// ft_thread_create_detached(x, &x->philos[i], &x->philos[i].monitor_thread, monitoring_func);
+		if (pthread_create(&x->philos[i].philo_thread, NULL, philo_func, (void *)(&x->philos[i])))
+			exit_invalid(x, "Error\n", "Fail to phtread_create at philo_thread\n");
+		if (pthread_detach(x->philos[i].philo_thread))
+			exit_invalid(x, "Error\n", "Fail to pthread_detach at philo_thread\n");
+		if (pthread_create(&x->philos[i].monitor_thread, NULL, monitoring_func, (void *)(&x->philos[i])))
+			exit_invalid(x, "x->philos[i]\n", "Fail to phtread_create at monitor_thread\n");
+		if (pthread_detach(x->philos[i].monitor_thread))
+			exit_invalid(x, "Error\n", "Fail to pthread_detach at monitor_thread\n");
 	}
 }
 

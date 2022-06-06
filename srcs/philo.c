@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/05 21:55:16 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:13:48 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	main(int ac, char **av)
 
 	memset(&x, 0, sizeof(x));
 	parse(&x, ac, av);
-	ft_mutex_lock(&x, &x.finish_mutex);
+	ft_mutex_lock(&x, &x.end_mutex);
 	exit_valid(&x);
 }

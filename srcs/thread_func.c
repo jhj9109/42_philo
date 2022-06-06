@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/05 22:43:35 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:15:41 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ static void	_thinking(t_philo *p)
 static void	_eating(t_philo *p)
 {
 	t_args	*x;
+	long long	now;
 
 	x = p->x;
 	p->last_eat = ft_get_ms(x);
 	ft_log(p, EATING);
-	ft_usleep(x, ft_get_ms(x), x->time_eat);
+	now = ft_get_ms(x);
+	ft_usleep(x, now, x->time_eat);
 	ft_mutex_unlock(x, &(x->forks[p->l]));
 	ft_mutex_unlock(x, &(x->forks[p->r]));
 }
@@ -39,10 +41,12 @@ static void	_eating(t_philo *p)
 static void	_sleeping(t_philo *p)
 {
 	t_args	*x;
+	long long	now;
 
 	x = p->x;
 	ft_log(p, SLEEPING);
-	ft_usleep(x, ft_get_ms(x), x->time_sleep);
+	now = ft_get_ms(x);
+	ft_usleep(x, now, x->time_sleep);
 }
 
 void	*philo_func(void *ptr)
@@ -52,9 +56,9 @@ void	*philo_func(void *ptr)
 
 	p = (t_philo *)ptr;
 	x = p->x;
-	if (p->id % 2)
-		ft_usleep(x, ft_get_ms(x), x->time_eat / 2);
 	p->last_eat = ft_get_ms(x);
+	if (p->id % 2 == 0)
+		ft_usleep(x, p->last_eat, EPSILON);
 	while (true)
 	{
 		_thinking(p);
@@ -72,17 +76,19 @@ void	*monitoring_func(void *ptr)
 
 	p = (t_philo *)ptr;
 	x = p->x;
-	ft_usleep(x, ft_get_ms(x), x->time_die / 2);
+	now = ft_get_ms(x);
+	ft_usleep(x, now, x->time_die / 2);
 	while (true)
 	{
 		now = ft_get_ms(x);
-		if (now - p->last_eat + (long long)x->time_die)
+		if (now - p->last_eat >= (long long)x->time_die)
 		{
-			// ft_mutex_lock(x, &x->dead);
+			ft_mutex_lock(x, &x->dead);
 			x->finish = true;
 			ft_log(p, DYING);
-			ft_mutex_unlock(x, &x->finish_mutex);
+			ft_mutex_unlock(x, &x->end_mutex);
 		}
+		usleep(EPSILON);
 	}
 	return (NULL);
 }

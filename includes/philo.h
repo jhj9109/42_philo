@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/05 22:29:55 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:50:42 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <sys/time.h>
 
-# define EPSILON	50
+# define EPSILON	10
 # define MILLI		1000
 
 /**
@@ -73,7 +73,7 @@ typedef struct s_args
 	t_mutex		*forks;
 	t_mutex		print;
 	t_mutex		dead;
-	t_mutex		finish_mutex;
+	t_mutex		end_mutex;
 	int			remain;
 	bool		finish;
 }	t_args;

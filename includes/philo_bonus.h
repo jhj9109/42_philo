@@ -90,7 +90,6 @@ void		exit_invalid(t_args *x, char *s1, char *s2);
 void		exit_valid(t_args *x);
 
 /* free */
-void		j_free(void **x);
 void		free_args(t_args *x);
 
 /* parse */

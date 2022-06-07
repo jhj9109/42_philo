@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:20:55 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:36:27 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void		exit_invalid(t_args *x, char *s1, char *s2);
 void		exit_valid(t_args *x);
 
 /* free */
-void		j_free(void **x);
 void		free_args(t_args *x);
 
 /* handle_fork */

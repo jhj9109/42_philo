@@ -83,7 +83,7 @@ void	*monitoring_func(void *ptr)
 	while (true)
 	{
 		now = ft_get_ms(x);
-		if (now - p->last_eat >= (long long)x->time_die)
+		if (now - p->last_eat > (long long)x->time_die)
 		{
 			ft_mutex_lock(x, &x->dead);
 			x->finish = true;

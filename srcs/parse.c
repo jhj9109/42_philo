@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:41:13 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:21:22 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ static void	_set_mutex(t_args *x)
 static void	_set_philo(t_args *x)
 {
 	int			i;
-	long long	begin_time;
 
-	begin_time = ft_get_ms(x);
-	x->begin_time = begin_time;
+	set_begin_time(x);
 	i = -1;
 	while (++i < x->number_philo)
 	{

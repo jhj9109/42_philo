@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:45:08 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:11:06 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_args
 	int					time_sleep;
 	int					number_goal_eat;
 	long long			begin_time;
+	long long			begin_time_sec;
+	int					begin_time_usec;
 	t_philo				*philos;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		print;
@@ -98,6 +100,7 @@ char		*ft_itoa(char *p, int n);
 bool		ft_atoi(char *s, int *dest);
 
 /* utils2 */
+void		set_begin_time(t_args *x);
 long long	ft_get_ms(t_args *x);
 void		ft_usleep(t_args *x, long long from_time, long long interval);
 void		ft_log(t_philo *p, t_msg_state msg_state);

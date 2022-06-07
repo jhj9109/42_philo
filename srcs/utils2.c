@@ -6,23 +6,30 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:40:13 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:38:26 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 20:46:43 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long long	ft_get_ms(t_args *x)
+void	set_begin_time(t_args *x)
 {
-	struct timeval	unix;
-	long long		res;
+	struct timeval		unix;
 
 	if (gettimeofday(&unix, NULL) == -1)
 		exit_invalid(x, "Error\n", "Fail to func gettimeofdat!\n");
-	res = (long long)(unix.tv_sec * MILLI + unix.tv_usec / MILLI);
-	if (unix.tv_usec % MILLI >= 500)
-		++res;
-	return (res);
+	x->begin_time_sec = unix.tv_sec;
+	x->begin_time_usec = unix.tv_usec;
+}
+
+long long	ft_get_ms(t_args *x)
+{
+	struct timeval		unix;
+
+	if (gettimeofday(&unix, NULL) == -1)
+		exit_invalid(x, "Error\n", "Fail to func gettimeofdat!\n");
+	return ((unix.tv_sec - x->begin_time_sec) * MILLI + \
+			(unix.tv_usec - x->begin_time_usec) / MILLI);
 }
 
 void	ft_usleep(t_args *x, long long from_time, long long interval)
@@ -58,7 +65,8 @@ void	ft_log(t_philo *p, t_msg_state msg_state)
 	number = p->id + 1;
 	if (msg_state == ACHIEVING)
 		number = x->number_goal_eat;
-	printf("%lld %d %s\n", now - x->begin_time, number, msg[msg_state]);
+	if (msg_state == EATING || msg_state == DYING)
+		printf("%lld %d %s => %lld\n", now, number, msg[msg_state], p->last_eat);
 	if (msg_state < DYING)
 		ft_mutex_unlock(x, &x->print);
 }

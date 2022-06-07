@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:22:48 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 21:04:04 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	_thinking(t_philo *p)
 static void	_eating(t_philo *p)
 {
 	t_args		*x;
-	long long	now;
 
 	x = p->x;
 	p->last_eat = ft_get_ms(x);
@@ -34,8 +33,7 @@ static void	_eating(t_philo *p)
 		ft_log(p, ACHIEVING);
 		ft_mutex_unlock(x, &x->end_mutex);
 	}
-	now = ft_get_ms(x);
-	ft_usleep(x, now, x->time_eat);
+	ft_usleep(x, p->last_eat, x->time_eat);
 	put_down_fork(p, x);
 }
 
@@ -58,10 +56,10 @@ void	*philo_func(void *ptr)
 
 	p = (t_philo *)ptr;
 	x = p->x;
-	p->last_eat = x->begin_time;
 	now = ft_get_ms(x);
 	if (p->id % 2 == 0)
-		usleep(EPSILON);
+		usleep(x->time_eat / 2);
+		// ft_usleep(x, 0, x->time_eat / 2);
 	while (true)
 	{
 		_thinking(p);
@@ -79,7 +77,7 @@ void	*monitoring_func(void *ptr)
 
 	p = (t_philo *)ptr;
 	x = p->x;
-	ft_usleep(x, x->begin_time, x->time_die / 2);
+	ft_usleep(x, 0, x->time_die / 2);
 	while (true)
 	{
 		now = ft_get_ms(x);
@@ -90,7 +88,6 @@ void	*monitoring_func(void *ptr)
 			ft_log(p, DYING);
 			ft_mutex_unlock(x, &x->end_mutex);
 		}
-		usleep(EPSILON);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:42 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:28:40 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:43:44 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	_fork_init(t_args *x)
 	{
 		pid = fork();
 		if (pid == ERROR)
-			exit(EXIT_FAILURE);	
+			exit(EXIT_FAILURE);
 		if (pid == 0)
 			child_proc(x, i);
 	}

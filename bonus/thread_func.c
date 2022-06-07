@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:31:06 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:32:26 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:42:47 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	_thinking(t_philo *p)
 	t_args	*x;
 
 	x = p->x;
-	ft_log(p, THINKING);	
+	ft_log(p, THINKING);
 	pick_up_fork(p, x);
 }
 

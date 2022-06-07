@@ -6,12 +6,11 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:52 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:30:08 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:43:15 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
 
 int	main(int ac, char **av)
 {

@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 14:52:07 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:41:13 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	_parse_arguments(t_args *x, int ac, char **av)
 static void	_calloc_philos_forks(t_args *x)
 {
 	x->philos = ft_calloc(x->number_philo, sizeof(t_philo));
-	x->forks = ft_calloc(x->number_philo, sizeof(t_mutex));
+	x->forks = ft_calloc(x->number_philo, sizeof(pthread_mutex_t));
 	if (!x->philos || !x->forks)
 		exit_invalid(x, "Error\n", "Fail to malloc at prepare\n");
 }

@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:31:22 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:31:00 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:38:26 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_log(t_philo *p, t_msg_state msg_state)
 void	ft_thread_create_detached(
 	t_args *x,
 	t_philo *philo,
-	t_thread *thread,
+	pthread_t *thread,
 	void *(*fp)(void *))
 {
 	if (pthread_create(thread, NULL, fp, (void *)(philo)))

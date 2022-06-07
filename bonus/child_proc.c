@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:23 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 22:29:36 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/07 19:43:00 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	child_proc(t_args *x, int philo_id)
 	memset(&philo_obj, 0, sizeof(philo_obj));
 	philo_obj.id = philo_id;
 	philo_obj.x = x;
-	ft_thread_create_detached(x, &philo_obj, &philo_obj.philo_thread, philo_func);
-	ft_thread_create_detached(x, &philo_obj, &philo_obj.monitor_thread, monitoring_func);
+	ft_thread_create_detached(x, &philo_obj, \
+		&philo_obj.philo_thread, philo_func);
+	ft_thread_create_detached(x, &philo_obj, \
+		&philo_obj.monitor_thread, monitoring_func);
 	ft_sem_wait(x, x->end_sem);
 	ft_sem_post(x, x->end_sem);
 }

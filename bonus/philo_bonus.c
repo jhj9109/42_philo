@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:52 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:43:15 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 21:45:48 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@ int	main(int ac, char **av)
 	memset(&x, 0, sizeof(x));
 	parse(&x, ac, av);
 	ft_sem_wait(&x, x.end_sem);
-	ft_sem_post(&x, x.end_sem);
 	exit_valid(&x);
 }

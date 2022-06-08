@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:44:02 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 21:27:53 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:40:48 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <semaphore.h>
 # include <string.h>
 # include <sys/time.h>
+# include <signal.h>
 
 # define EPSILON	99
 # define MILLI		1000
@@ -81,7 +82,7 @@ typedef struct s_args
 	t_philo		philo_obj;
 	pthread_t	philo;
 	pthread_t	monitor;
-
+	pthread_t	achieve;
 }	t_args;
 
 /* child_proc */
@@ -109,6 +110,7 @@ void		parse(t_args *x, int ac, char **av);
 /* thread_func */
 void		*philo_func(void *ptr);
 void		*monitoring_func(void *ptr);
+void		*achieve_func(void *ptr);
 
 /* utils */
 void		*ft_memset(void *b, int c, size_t len);

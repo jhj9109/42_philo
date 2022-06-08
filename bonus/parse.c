@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:42 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 21:30:38 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:40:48 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	_fork_init(t_args *x)
 	pid_t	pid;
 	int		i;
 
+	x->philo_obj.x = x;
+	if (pthread_create(&x->achieve, \
+		NULL, achieve_func, (void *)(&x->philo_obj)))
+		exit_invalid(x, "Error\n", "Fail to phtread_create at x->achieve\n");
 	set_begin_time(x);
 	i = -1;
 	while (++i < x->number_philo)

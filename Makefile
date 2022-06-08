@@ -6,7 +6,7 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/06 22:20:09 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/08 22:40:48 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC_FILES = exit.c \
 			utils.c \
 			utils2.c
 
-BNS_FILES = child_proc.c \
+BNS_FILES = achieve_func.c \
+			child_proc.c \
 			exit.c \
 			free.c \
 			handle_fork.c \

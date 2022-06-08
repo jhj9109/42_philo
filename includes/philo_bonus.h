@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:44:02 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:44:43 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:15:38 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,11 @@ typedef struct s_args
 	int			number_goal_eat;
 	long long	begin_time;
 	sem_t		*forks;
+	sem_t		*end_sem;
 	sem_t		*waiting;
 	sem_t		*print;
 	sem_t		*dead;
-	sem_t		*end_sem;
+	sem_t		*aggregate;
 	int			remain;
 	bool		finish;
 	t_philo		philo_obj;

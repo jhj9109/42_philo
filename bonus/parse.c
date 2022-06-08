@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:42 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:43:44 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:15:40 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	_sem_init(t_args *x)
 	ft_sem_init(x, &x->waiting, "waiting", 1);
 	ft_sem_init(x, &x->print, "print", 1);
 	ft_sem_init(x, &x->dead, "dead", 1);
+	ft_sem_init(x, &x->aggregate, "aggregate", 1);
 }
 
 void	_fork_init(t_args *x)

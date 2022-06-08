@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:42 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 20:15:40 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:26:50 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	_fork_init(t_args *x)
 	pid_t	pid;
 	int		i;
 
+	set_begin_time(x);
 	i = -1;
 	while (++i < x->number_philo)
 	{

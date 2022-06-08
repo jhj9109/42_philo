@@ -6,26 +6,18 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 19:51:06 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 20:13:25 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static void	_thinking(t_philo *p)
-{
-	t_args	*x;
-
-	x = p->x;
-	ft_log(p, THINKING);
-	pick_up_fork(p, x);
-}
 
 static void	_eating(t_philo *p)
 {
 	t_args		*x;
 
 	x = p->x;
+	pick_up_fork(p, x);
 	p->last_eat = ft_get_ms(x);
 	ft_log(p, EATING);
 	if (++(p->eaten) == x->number_goal_eat)
@@ -53,23 +45,25 @@ static void	_sleeping(t_philo *p)
 	ft_usleep(x, now, x->time_sleep);
 }
 
+static void	_thinking(t_philo *p)
+{
+	ft_log(p, THINKING);
+}
+
 void	*philo_func(void *ptr)
 {
 	t_philo		*p;
 	t_args		*x;
-	long long	now;
 
 	p = (t_philo *)ptr;
 	x = p->x;
-	now = ft_get_ms(x);
 	if (p->id % 2 == 0)
-		usleep(x->time_eat / 2);
-		// ft_usleep(x, 0, x->time_eat / 2);
+		ft_usleep(x, 0, x->time_eat / 2);
 	while (true)
 	{
-		_thinking(p);
 		_eating(p);
 		_sleeping(p);
+		_thinking(p);
 	}
 	return (NULL);
 }

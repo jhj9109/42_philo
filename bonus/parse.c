@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:42 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 22:40:48 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 23:16:40 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	_fork_init(t_args *x)
 	int		i;
 
 	x->philo_obj.x = x;
-	if (pthread_create(&x->achieve, \
+	if (x->remain != -1 && pthread_create(&x->achieve, \
 		NULL, achieve_func, (void *)(&x->philo_obj)))
 		exit_invalid(x, "Error\n", "Fail to phtread_create at x->achieve\n");
 	set_begin_time(x);

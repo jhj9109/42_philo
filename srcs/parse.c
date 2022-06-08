@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 20:21:22 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:51:06 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	_set_mutex(t_args *x)
 		ft_mutex_init(x, &x->forks[i]);
 	ft_mutex_init(x, &x->print);
 	ft_mutex_init(x, &x->dead);
+	ft_mutex_init(x, &x->aggregate);
 	ft_mutex_init(x, &x->end_mutex);
 	ft_mutex_lock(x, &x->end_mutex);
 }

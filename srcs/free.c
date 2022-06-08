@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:12 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/07 19:36:15 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 19:51:06 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	_unset_mutex(t_args *x)
 	}
 	pthread_mutex_destroy(&x->print);
 	pthread_mutex_destroy(&x->dead);
+	pthread_mutex_destroy(&x->aggregate);
 	pthread_mutex_destroy(&x->end_mutex);
 }
 

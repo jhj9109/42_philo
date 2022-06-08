@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:31:06 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 20:21:14 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:07:41 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	*monitoring_func(void *ptr)
 	while (true)
 	{
 		now = ft_get_ms(x);
-		if (now - p->last_eat >= (long long)x->time_die)
+		if (now - p->last_eat > (long long)x->time_die)
 		{
 			ft_sem_wait(x, x->dead);
 			ft_log(p, DYING);

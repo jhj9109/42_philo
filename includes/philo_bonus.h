@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:44:02 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 20:29:20 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 21:27:53 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_args
 	long long	begin_time;
 	long long	begin_time_sec;
 	int			begin_time_usec;
+	int			*pids;
 	sem_t		*forks;
 	sem_t		*end_sem;
 	sem_t		*waiting;

@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 19:51:06 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:52:34 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void		*monitoring_func(void *ptr);
 /* utils */
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_calloc(size_t count, size_t size);
-char		*ft_itoa(char *p, int n);
 bool		ft_atoi(char *s, int *dest);
 
 /* utils2 */

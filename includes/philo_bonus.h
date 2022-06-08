@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:44:02 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 22:40:48 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:52:38 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void		*achieve_func(void *ptr);
 /* utils */
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_calloc(size_t count, size_t size);
-char		*ft_itoa(char *p, int n);
 bool		ft_atoi(char *s, int *dest);
 
 /* utils2 */

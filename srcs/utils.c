@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:10:13 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/06 14:51:38 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:52:47 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,6 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	ft_memset(ret, 0, count * size);
 	return (ret);
-}
-
-char	*ft_itoa(char *p, int n)
-{
-	static char	*alpha = "0123456789";
-
-	while (true)
-	{
-		*(--p) = alpha[n % 10];
-		n /= 10;
-		if (n == 0)
-			return (p);
-	}
 }
 
 bool	ft_atoi(char *s, int *dest)

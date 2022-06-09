@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:44:02 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 22:52:38 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:12:46 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_args
 	int			time_die;
 	int			time_eat;
 	int			time_sleep;
-	int			number_goal_eat;
+	int			number_eat;
 	long long	begin_time;
 	long long	begin_time_sec;
 	int			begin_time_usec;

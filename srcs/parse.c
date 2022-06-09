@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:26:21 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 19:51:06 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:13:42 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	_parse_arguments(t_args *x, int ac, char **av)
 		exit_invalid(x, "Error\n", "Invalid argument!\n");
 	if (ac == 6)
 	{
-		if (!ft_atoi(av[5], &(x->number_goal_eat)))
+		if (!ft_atoi(av[5], &(x->number_eat)))
 			exit_invalid(x, "Error\n", "Invalid argument!\n");
 		x->remain = x->number_philo;
 	}

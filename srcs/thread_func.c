@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/09 22:12:46 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:28:44 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ static void	_eating(t_philo *p)
 static void	_sleeping(t_philo *p)
 {
 	t_args		*x;
-	long long	now;
 
 	x = p->x;
 	ft_log(p, SLEEPING);
-	now = ft_get_ms(x);
-	ft_usleep(x, now, x->time_sleep);
+	ft_usleep(x, ft_get_ms(x), x->time_sleep);
 }
 
 static void	_thinking(t_philo *p)

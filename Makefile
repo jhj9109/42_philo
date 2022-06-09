@@ -6,7 +6,7 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/08 22:40:48 by hyeonjan         ###   ########.fr        #
+m#    Updated: 2022/06/09 17:47:06 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME = philo
 NAME2 = philo_bonus
 
 CC = cc
-# CFLAGS = -g -fsanitize=address -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra -Werror
 
 INC_LINK = -I ./includes

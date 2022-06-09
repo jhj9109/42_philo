@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:40:13 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 19:58:42 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/09 22:12:46 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_usleep(t_args *x, long long from_time, long long interval)
 	long long	now;
 
 	now = ft_get_ms(x);
-	while (now - from_time < interval)
+	while (!x->finish && now - from_time < interval)
 	{
 		if (usleep(EPSILON) == ERROR)
 			exit_invalid(x, "Error\n", "Fail to sleep_little\n");
@@ -56,18 +56,22 @@ void	ft_log(t_philo *p, t_msg_state msg_state)
 		"Achieved program's goal!",
 	};
 	t_args		*x;
-	long long	now;
-	int			number;
 
 	x = p->x;
 	ft_mutex_lock(x, &x->print);
-	now = ft_get_ms(x);
-	number = p->id + 1;
-	if (msg_state == ACHIEVING)
-		number = x->number_goal_eat;
-	printf("%lld %d %s\n", now, number, msg[msg_state]);
-	if (msg_state < DYING)
-		ft_mutex_unlock(x, &x->print);
+	if (!x->finish)
+	{
+		if (msg_state == ACHIEVING)
+			printf("%lld %d %s\n", ft_get_ms(x), x->number_eat, msg[msg_state]);
+		else
+			printf("%lld %d %s\n", ft_get_ms(x), p->id + 1, msg[msg_state]);
+		if (msg_state >= DYING)
+		{
+			x->finish = true;
+			ft_mutex_unlock(x, &x->end_mutex);
+		}
+	}
+	ft_mutex_unlock(x, &x->print);
 }
 
 void	ft_thread_create_detached(

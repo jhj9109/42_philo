@@ -25,8 +25,6 @@ static void	_eating(t_philo *p)
 		ft_mutex_lock(x, &x->aggregate);
 		if (--(x->remain) == 0)
 			ft_log(p, ACHIEVING);
-			ft_mutex_unlock(x, &x->end_mutex);
-		}	
 		ft_mutex_unlock(x, &x->aggregate);
 	}
 	ft_usleep(x, p->last_eat, x->time_eat);
@@ -58,12 +56,15 @@ void	*philo_func(void *ptr)
 	x = p->x;
 	if (p->id % 2 == 0)
 		ft_usleep(x, 0, x->time_eat / 2);
-	while (true)
+	while (!x->finish)
 	{
 		_eating(p);
 		_sleeping(p);
 		_thinking(p);
 	}
+	ft_mutex_lock(x, &x->end_thread_wait);
+	--(x->remain_thread);
+	ft_mutex_unlock(x, &x->end_thread_wait);
 	return (NULL);
 }
 
@@ -76,16 +77,14 @@ void	*monitoring_func(void *ptr)
 	p = (t_philo *)ptr;
 	x = p->x;
 	ft_usleep(x, 0, x->time_die / 2);
-	while (true)
+	while (!x->finish)
 	{
 		now = ft_get_ms(x);
 		if (now - p->last_eat > (long long)x->time_die)
-		{
-			ft_mutex_lock(x, &x->dead);
-			x->finish = true;
 			ft_log(p, DYING);
-			ft_mutex_unlock(x, &x->end_mutex);
-		}
 	}
+	ft_mutex_lock(x, &x->end_thread_wait);
+	--(x->remain_thread);
+	ft_mutex_unlock(x, &x->end_thread_wait);
 	return (NULL);
 }

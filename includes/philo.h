@@ -69,9 +69,10 @@ typedef struct s_args
 	t_philo				*philos;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		print;
-	pthread_mutex_t		dead;
 	pthread_mutex_t		aggregate;
 	pthread_mutex_t		end_mutex;
+	pthread_mutex_t		end_thread_wait;
+	int					remain_thread;
 	int					remain;
 	bool				finish;
 }	t_args;

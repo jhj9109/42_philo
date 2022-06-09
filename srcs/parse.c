@@ -21,6 +21,7 @@ static void	_parse_arguments(t_args *x, int ac, char **av)
 		!ft_atoi(av[3], &(x->time_eat)) || \
 		!ft_atoi(av[4], &(x->time_sleep)))
 		exit_invalid(x, "Error\n", "Invalid argument!\n");
+	x->remain_thread = 2 * x->number_philo;
 	if (ac == 6)
 	{
 		if (!ft_atoi(av[5], &(x->number_eat)))
@@ -47,9 +48,9 @@ static void	_set_mutex(t_args *x)
 	while (++i < x->number_philo)
 		ft_mutex_init(x, &x->forks[i]);
 	ft_mutex_init(x, &x->print);
-	ft_mutex_init(x, &x->dead);
 	ft_mutex_init(x, &x->aggregate);
 	ft_mutex_init(x, &x->end_mutex);
+	ft_mutex_init(x, &x->end_thread_wait);
 	ft_mutex_lock(x, &x->end_mutex);
 }
 
@@ -62,16 +63,8 @@ static void	_set_philo(t_args *x)
 	while (++i < x->number_philo)
 	{
 		x->philos[i].id = i;
-		if (i % 2)
-		{
-			x->philos[i].r = i;
-			x->philos[i].l = (i + 1) % (x->number_philo);
-		}
-		else
-		{
-			x->philos[i].l = i;
-			x->philos[i].r = (i + 1) % (x->number_philo);
-		}
+		x->philos[i].r = i;
+		x->philos[i].l = (i + 1) % (x->number_philo);
 		x->philos[i].x = x;
 		ft_thread_create_detached(x, &x->philos[i], \
 			&x->philos[i].philo_thread, philo_func);

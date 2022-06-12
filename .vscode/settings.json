@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"time.h": "c",
-		"__threading_support": "c",
-		"string.h": "c",
-		"semaphore.h": "c"
-	}
-}

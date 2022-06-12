@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:35 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 21:42:13 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/12 16:28:17 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	_close_sem(t_args *x)
 	sem_close(x->waiting);
 	sem_close(x->print);
 	sem_close(x->dead);
+	x->finish = true;
+	ft_sem_post(x, x->aggregate);
 	sem_close(x->aggregate);
 }
 

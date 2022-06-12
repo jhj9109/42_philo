@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:30:42 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/09 22:12:46 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/12 16:10:29 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	_parse_arguments(t_args *x, int ac, char **av)
 		!ft_atoi(av[3], &(x->time_eat)) || \
 		!ft_atoi(av[4], &(x->time_sleep)))
 		exit_invalid(x, "Error\n", "Invalid argument!\n");
-	x->pids = ft_calloc(x->number_philo, sizeof(int));
+	x->pids = ft_calloc(x->number_philo, sizeof(pid_t));
 	if (!x->pids)
 		exit_invalid(x, "Error\n", "Fail to calloc at x->pids\n");
 	if (ac == 6)

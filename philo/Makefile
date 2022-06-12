@@ -6,12 +6,11 @@
 #    By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 19:13:46 by hyeonjan          #+#    #+#              #
-#    Updated: 2022/06/10 22:16:34 by hyeonjan         ###   ########.fr        #
+#    Updated: 2022/06/12 16:36:22 by hyeonjan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-NAME2 = philo_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -22,7 +21,6 @@ AR = ar rcus
 RM = rm -f
 
 SRC_DIR = ./srcs/
-BNS_DIR = ./bonus/
 
 SRC_FILES = exit.c \
 			free.c \
@@ -34,28 +32,11 @@ SRC_FILES = exit.c \
 			utils.c \
 			utils2.c
 
-BNS_FILES = achieve_func.c \
-			child_proc.c \
-			exit.c \
-			free.c \
-			handle_fork.c \
-			parse.c \
-			philo_bonus.c \
-			semaphore.c \
-			thread_func.c \
-			utils.c \
-			utils2.c
-
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
-BNSS = $(addprefix $(BNS_DIR), $(BNS_FILES))
 
 SRC_OBJ = $(SRCS:.c=.o)
-BNS_OBJ = $(BNSS:.c=.o)
 
 all: $(NAME)
-
-bonus:
-	@make $(NAME2)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC_LINK) -o $@ -c $<
@@ -63,15 +44,12 @@ bonus:
 $(NAME): $(SRC_OBJ)
 	$(CC) $(CFLAGS) $(INC_LINK) -o $(NAME) $(SRC_OBJ)
 
-$(NAME2): $(BNS_OBJ)
-	$(CC) $(CFLAGS) $(INC_LINK) -o $(NAME2) $(BNS_OBJ)
-
 clean:
-	$(RM) $(SRC_OBJ) $(BNS_OBJ)
+	$(RM) $(SRC_OBJ)
 
 fclean: 
 	make clean
-	$(RM) $(NAME) $(NAME2)
+	$(RM) $(NAME)
 
 re:
 	make fclean

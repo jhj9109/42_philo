@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/09 22:12:46 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:08:31 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void		*monitoring_func(void *ptr);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_calloc(size_t count, size_t size);
 bool		ft_atoi(char *s, int *dest);
+void		ft_reduce_remain_thead(t_args *x);
 
 /* utils2 */
 void		set_begin_time(t_args *x);

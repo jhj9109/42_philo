@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/09 22:28:44 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:08:50 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ void	*philo_func(void *ptr)
 		_sleeping(p);
 		_thinking(p);
 	}
-	ft_mutex_lock(x, &x->end_thread_wait);
-	--(x->remain_thread);
-	ft_mutex_unlock(x, &x->end_thread_wait);
+	ft_reduce_remain_thead(x);
 	return (NULL);
 }
 
@@ -81,8 +79,6 @@ void	*monitoring_func(void *ptr)
 		if (now - p->last_eat > (long long)x->time_die)
 			ft_log(p, DYING);
 	}
-	ft_mutex_lock(x, &x->end_thread_wait);
-	--(x->remain_thread);
-	ft_mutex_unlock(x, &x->end_thread_wait);
+	ft_reduce_remain_thead(x);
 	return (NULL);
 }

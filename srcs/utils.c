@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 20:10:13 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/08 22:52:47 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:09:11 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,11 @@ bool	ft_atoi(char *s, int *dest)
 	}
 	*dest = number;
 	return (true);
+}
+
+void	ft_reduce_remain_thead(t_args *x)
+{
+	ft_mutex_lock(x, &x->end_thread_wait);
+	--(x->remain_thread);
+	ft_mutex_unlock(x, &x->end_thread_wait);
 }

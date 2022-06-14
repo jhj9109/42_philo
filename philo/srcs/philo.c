@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:14:18 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/09 22:13:11 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/14 22:34:33 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	_wait_for_end_thread(t_args *x)
 {
+	if (x->number_philo == 1)
+		ft_mutex_unlock(x, &(x->forks[0]));
 	while (x->remain_thread)
 		usleep(EPSILON);
 }

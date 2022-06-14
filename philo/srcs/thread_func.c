@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:39:44 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/12 15:08:50 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/14 23:07:13 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	_eating(t_philo *p)
 	pick_up_fork(p, x);
 	p->last_eat = ft_get_ms(x);
 	ft_log(p, EATING);
+	ft_usleep(x, p->last_eat, x->time_eat);
 	if (++(p->eaten) == x->number_eat)
 	{
 		ft_mutex_lock(x, &x->aggregate);
@@ -27,7 +28,6 @@ static void	_eating(t_philo *p)
 			ft_log(p, ACHIEVING);
 		ft_mutex_unlock(x, &x->aggregate);
 	}
-	ft_usleep(x, p->last_eat, x->time_eat);
 	put_down_fork(p, x);
 }
 

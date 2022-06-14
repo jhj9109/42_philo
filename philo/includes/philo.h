@@ -6,7 +6,7 @@
 /*   By: hyeonjan <hyeonjan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:54 by hyeonjan          #+#    #+#             */
-/*   Updated: 2022/06/12 15:08:31 by hyeonjan         ###   ########.fr       */
+/*   Updated: 2022/06/14 22:44:54 by hyeonjan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <string.h>
 # include <sys/time.h>
 
-# define EPSILON	10
+# define EPSILON	100
 # define MILLI		1000
 
 /**
